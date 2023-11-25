@@ -13,7 +13,7 @@ right_border = 1 # Правая граница рассматриваемого 
 x = np.linspace(0, right_border, num=N)
 h = right_border/N # Шаг при интегрировании с помощью квадратурных формулы
 
-f = np.array([1.0 for _ in range(N)]) # Значения правой части уравнения
+f = np.array([1.0 for _ in range(N)]) + 0.2*np.random.randn(N) # Значения правой части уравнения
 
 K = np.zeros((N, N)) # Двумерный массив, содержащий значения ядра уравнения
 for i in range(N):
