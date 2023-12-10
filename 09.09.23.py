@@ -5,6 +5,7 @@ Created on Sat Sep  9 13:43:11 2023
 @author: khrstln
 """
 #%%
+# Работа №1: Решить уравнение Вольтерра 2-го рода методом трапеций и последовательных приближений
 import numpy as np
 import matplotlib.pyplot as plt
 
