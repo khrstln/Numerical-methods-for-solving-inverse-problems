@@ -7,6 +7,7 @@ Created on Sat Nov 18 00:26:52 2023
 import numpy as np
 from scipy.fft import fftfreq, fft, ifft
 from matplotlib import pyplot as plt
+import scipy
 
 def der_two_points(func_arr: np.array, dt: float):
     return (np.roll(func_arr, -1) - np.roll(func_arr, 1)) / (2*dt)
@@ -68,6 +69,8 @@ def draw_func(x: np.array, f: np.array, x_lbl=None, y_lbl=None, title=None, colo
         plt.title(title)
     # plt.show()
     
+def Tikhonov_solver(f_noise: np.array, K: np.array, alpha: float, M: np.array):
+    return scipy.fft.ifft(scipy.fft.fft(f_noise) * np.conj(scipy.fft.fft(K)) / (scipy.fft.fft(K) * np.conj(scipy.fft.fft(K)) + alpha * M))
     
     
     

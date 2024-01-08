@@ -1,11 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Dec  9 09:38:37 2023
-
-@author: khrstln
-"""
-
-#Работа №2: 
+# ЛР №2: 
 
 import numpy as np
 import matplotlib.pyplot as plt

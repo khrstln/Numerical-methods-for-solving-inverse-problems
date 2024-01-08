@@ -43,7 +43,7 @@ x_alpha_2 = Tikhonov_solver(f_noise_arr_2, K_arr, alpha, M_arr)
 # x_alpha_1 = np.real(x_alpha_1)
 # x_alpha_2 = np.real(x_alpha_2)
 
-alpha_arr = np.logspace(5, 12, 200)
+alpha_arr = np.logspace(10, 12, 5*10**2)
 
 error_arr = [[], []]
 
@@ -64,11 +64,11 @@ plt.legend([f"$\sigma_1^2 = {sigma_1}$", f"$\sigma_2^2 = {sigma_2}$"])
 plt.show()
 
 plt.plot(t_arr[1:], x_arr[1:], color="red", linewidth=5, alpha=0.5)
-plt.plot(t_arr[1:], x_alpha_1[1:])
+# plt.plot(t_arr[1:], x_alpha_1[1:])
 plt.plot(t_arr[1:], x_alpha_2[1:])
 plt.xlabel("t")
 plt.ylabel("$x_{\\alpha} (t)$")
-plt.legend(["$\sigma^2 = 0$", f"$\sigma_1^2 = {sigma_1}$", f"$\sigma_2^2 = {sigma_2}$"])
+plt.legend(["$\sigma^2 = 0$", f"$\sigma_2^2 = {sigma_2}$"])
 
 plt.show()
 
@@ -91,18 +91,19 @@ for i in range(num_of_exp):
         error_arr[i][0].append(error_1)
         error_arr[i][1].append(error_2)
 alpha_opt = {sigma_1: [], sigma_2: []}
+
 for i in range(num_of_exp):   
     alpha_opt[sigma_1] += [alpha_arr[np.where(error_arr[i][0] == min(error_arr[i][0]))][0]]
     alpha_opt[sigma_2] += [alpha_arr[np.where(error_arr[i][1] == min(error_arr[i][1]))][0]]
 
-plt.hist(alpha_opt[sigma_1], bins=None)
-plt.xlabel("$\\alpha_{opt}$")
+plt.hist(np.log(alpha_opt[sigma_1]), bins=None)
+plt.xlabel("$\\log(\\alpha_{opt})$")
 plt.ylabel("frequency")
 plt.title(f"$\\sigma_1 = {sigma_1}$")
 plt.show()
 
-plt.hist(alpha_opt[sigma_2], bins=None)
-plt.xlabel("$\\alpha_{opt}$")
+plt.hist(np.log(alpha_opt[sigma_2]), bins=None)
+plt.xlabel("$\\log(\\alpha_{opt})$")
 plt.ylabel("frequency")
 plt.title(f"$\\sigma_2 = {sigma_2}$")
 plt.show()

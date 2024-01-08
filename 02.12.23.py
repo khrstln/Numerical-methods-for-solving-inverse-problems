@@ -27,7 +27,8 @@ p_v = 0.3
 for i in range(N):
     if np.random.rand() < p_v:
         x_arr[i] += 0.5 + np.random.rand()
-        
+
+plt.figure(dpi=500)
 draw_dots(t_arr, x_arr, x_lbl="t", y_lbl="x(t)", title="Зашумленные данные", color="black", size=10)
 
 RANSAC = RANSACRegressor(stop_n_inliers=50, max_trials=5)
